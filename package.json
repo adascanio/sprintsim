@@ -1,0 +1,28 @@
+{
+  "name": "sprintsim",
+  "version": "1.0.0",
+  "description": "Sprint simulation",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "start": "node ./index.js"
+  },
+  "keywords": [
+    "montecarlo",
+    "estimation",
+    "sprint",
+    "simulation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "knapsack01": "git+https://github.com/adascanio/knapsack01.git",
+    "montecarlo-estimate": "git+https://github.com/adascanio/montecarlo-estimate.git"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
