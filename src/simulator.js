@@ -24,7 +24,7 @@ class Simulator {
 		
 	    var valueAtThreshold = table.valueAtThreshold;
 	    var thresholdIndex = table.thresholdIndex;
-	    var totalSprintPlanning = this.__getTotalSprintPlanning(sprint);
+	    var totalSprintPlanning = this.__getTotalSprintPlanning(sprint, biasKey);
 	    
 	    var retTable = table.probabilityTable;
 
@@ -67,10 +67,10 @@ class Simulator {
     /**
      * Calculate the sprint planning from sprint cards
      */
-	__getTotalSprintPlanning(sprint) {
+	__getTotalSprintPlanning(sprint, weightKey) {
 		var total = 0;
 		sprint.cards.forEach(function(item) {
-			total +=item.estimation;
+			total +=item[weightKey];
 		})
 		return total;
 	}
