@@ -61,7 +61,13 @@ class Simulator {
 		var mc = this.runMontecarlo(sprint, settings);
 		var kpBiased = this.runKnapsack(mc.biasedItemsAtTh.biasedItems, mc.expectedDelivery, {"map" : {"value" : "bvalue", "weight" : "biasedValue"}});
 		var kp = this.runKnapsack(sprint.cards, sprint.capacity, {"map" : {"value" : "bvalue", "weight" : "estimation"}});
-		return { mc : mc, biasedKp : kpBiased, kp : kp} ;
+		return {
+			 mc : mc,
+			 biasedKp : kpBiased,
+			 kp : kp,
+			 sprint : sprint,
+			 totalSprintPlanning : __getTotalSprintPlanning(sprint,"estimation")
+			} ;
 	}
 
     /**
