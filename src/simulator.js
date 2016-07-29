@@ -66,7 +66,7 @@ class Simulator {
 			 biasedKp : kpBiased,
 			 kp : kp,
 			 sprint : sprint,
-			 totalSprintPlanning : __getTotalSprintPlanning(sprint,"estimation")
+			 totalSprintPlanning : this.__getTotalSprintPlanning(sprint,"estimation")
 			} ;
 	}
 
