@@ -7,10 +7,10 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
 });
 
 /** bodyParser.urlencoded(options)
@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
  * and exposes the resulting object (containing the keys and values) on req.body
  */
 app.use(bodyparser.urlencoded({
-    extended: true
+	extended: true
 }));
 
 /**bodyParser.json(options)
@@ -29,10 +29,10 @@ app.use(bodyparser.json());
 /**
  * accept an object type sprintPlanning @see api definition sprintPlanning
  */
-app.post('/api/1/simulation',(req,res) =>{
-	
+app.post('/api/1/simulation', (req, res) => {
+
 	var body = req.body;
-	
+
 	var result = simulator.runSimulation(body);
 
 	res.json(result);
@@ -41,9 +41,9 @@ app.post('/api/1/simulation',(req,res) =>{
 /**
  * accept an object type sprintPlanning @see api definition sprintPlanning
  */
-app.post('/api/1/simulation/montecarlo',(req,res) =>{
+app.post('/api/1/simulation/montecarlo', (req, res) => {
 	var body = req.body;
-	
+
 	var result = simulator.runMontecarlo(body);
 
 	res.json(result);
@@ -53,7 +53,7 @@ app.post('/api/1/simulation/montecarlo',(req,res) =>{
  * accept an array of type card @see api definition card
  * @param {string} capacity the sprint capacity
  */
-app.post('/api/1/simulation/kp01',(req,res) =>{
+app.post('/api/1/simulation/kp01', (req, res) => {
 	var body = req.body;
 	var weightMap = req.query.weight;
 	var valueMap = req.query.value;
@@ -62,15 +62,15 @@ app.post('/api/1/simulation/kp01',(req,res) =>{
 
 	var map = null;
 	if (weightMap && valueMap) {
-		map = {value : valueMap, weight : weightMap};
+		map = { value: valueMap, weight: weightMap };
 	}
-	
-	var result = simulator.runKnapsack(body, capacity, {map  : map});
+
+	var result = simulator.runKnapsack(body, capacity, { map: map });
 
 	res.json(result);
 });
 
 
 app.listen(port, function () {
-  console.log('Listening on port:', port);
+	console.log('Listening on port:', port);
 });
